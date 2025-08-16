@@ -8,15 +8,6 @@ export type Experience = {
   location: string;
 };
 
-export type Education = {
-    degree: string;
-    institution?: string;
-    field?: string;
-    startYear?: number;
-    endYear?: number;
-    ongoing?: boolean;
-    description: string;
-}
 export const experience: Experience[] = [
     {
         title: "Kursleder i Learnlink",
@@ -57,4 +48,5 @@ export const experience: Experience[] = [
         period: "Aug 2020 – Apr 2021",
         location: "Bekkestua",
     },
-    ];
+];
+
