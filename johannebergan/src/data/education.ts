@@ -9,9 +9,9 @@ export type Education = {
 }
 
 
-const education: Education[] = [
+export const education: Education[] = [
   {
-    institution: "NTNU",
+    institution: "NTNU - Trondheim",
     degree: "Master",
     field: "Informatikk – Software Engineering",
     startYear: 2025,
@@ -19,7 +19,7 @@ const education: Education[] = [
     description: "Påbegynt mastergrad med spesialisering innen software engineering."
   },
   {
-    institution: "NTNU",
+    institution: "NTNU - Trondheim",
     degree: "Bachelor",
     field: "Informatikk",
     startYear: 2022,
