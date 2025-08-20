@@ -17,7 +17,8 @@ export default function SideNav({items}: SideNavProps){
 
     
     return(
-        <nav>
+        <nav className="fixed left-10 top-16"
+>
             <ul className="flex flex-col gap-2">
                 {items.map(({ title, path }) => {
                 const active = pathname === path;

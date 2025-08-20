@@ -1,31 +1,77 @@
-import { books } from "@/data/books";
+"use client";
 
-export default function booksPage() {
-    return(
+import { useState } from "react";
+import { books } from "@/data/books";
+import Image from "next/image"
+
+function bookByYear(year: number) {
+  return books.filter((b) => b.yearRead === year);
+}
+
+export default function BooksPage() {
+  const [openYear, setOpenYear] = useState<number | null>(null);
+
+  const toggleYear = (year: number) => {
+    setOpenYear(openYear === year ? null : year);
+  };
+
+  return (
     <main className="mx-auto max-w-5xl px-4 py-8">
-      <header className="mb-8">
-        <h1 className="text-3xl font-semibold tracking-tight">Bøker</h1>
-        <div>De siste to årene har jeg fått opp interessen for lesing. Dette er bøkene jeg har lest.</div>
+    <header className="flex flex-col md:flex-row items-center gap-6 mb-10">
+        {/* Bilde til venstre */}
+        <Image
+          src="/images/lese.jpeg"
+          alt="Johanne leser en bok"
+          width={400}
+          height={300}
+        />
+
+        {/* Tekst til høyre */}
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight mb-2">
+            Bøker jeg har lest
+          </h1>
+          <p className="text-gray-700">
+            Halla! Jeg liker å lese – sjekk ut bøkene jeg har kost meg med i det siste.
+          </p>
+        </div>
       </header>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        {books.map((book, idx) => (
-          <div key={idx} className="flex flex-col items-center">
-            {book.cover ? (
-              <img
-                src={book.cover}
-                alt={book.title}
-                className="h-48 w-auto object-contain mb-2"
-              />
-            ) : (
-              <div className="h-48 w-32 bg-gray-200 flex items-center justify-center mb-2">
-                ❌
-              </div>
-            )}
-            <div className="text-center text-sm font-medium">{book.title}</div>
-            <div className="text-center text-xs text-gray-500">{book.author}</div>
-          </div>
-        ))}
-      </div>
+
+
+      {[2025, 2024].map((year) => (
+        <section key={year} className="mb-6">
+          <button
+            onClick={() => toggleYear(year)}
+            className="w-full flex justify-between items-center py-3 px-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
+          >
+            <span className="text-xl font-semibold">{year}</span>
+            <span>{openYear === year ? "▲" : "▼"}</span>
+          </button>
+
+          {openYear === year && (
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+              {bookByYear(year).map((book, idx) => (
+                <article
+                  key={`${book.title}-${idx}`}
+                  className="flex flex-col items-center p-2"
+                >
+                  <img
+                    src={book.cover ?? "/images/cover-placeholder.png"}
+                    alt={book.title}
+                    className="h-48 w-auto object-contain mb-2"
+                  />
+                  <p className="text-sm font-medium text-center line-clamp-2">
+                    {book.title}
+                  </p>
+                  <p className="text-xs text-gray-500 text-center">
+                    {book.author}
+                  </p>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      ))}
     </main>
-    )
+  );
 }

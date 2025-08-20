@@ -28,7 +28,7 @@ function formatRange(start: string, end?: string, ongoing?: boolean) {
 
 export default function CvPage() {
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
+    <main className="mx-auto max-w-5xl px-4 py-16">
       <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight">Her er min CV</h1>
       </header>
