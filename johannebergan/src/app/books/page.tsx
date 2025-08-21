@@ -26,7 +26,6 @@ export default function BooksPage() {
           height={300}
         />
 
-        {/* Tekst til høyre */}
         <div>
           <h1 className="text-3xl font-semibold tracking-tight mb-2">
             Bøker jeg har lest
@@ -55,7 +54,7 @@ export default function BooksPage() {
                   key={`${book.title}-${idx}`}
                   className="flex flex-col items-center p-2"
                 >
-                  <img
+                  <Image
                     src={book.cover ?? "/images/cover-placeholder.png"}
                     alt={book.title}
                     className="h-48 w-auto object-contain mb-2"

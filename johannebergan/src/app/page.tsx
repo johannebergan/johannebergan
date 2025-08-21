@@ -1,13 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Gallery from "@/components/gallery";
 import { FaBookOpen, FaCameraRetro } from "react-icons/fa";
 
 export default function Home() {
-  const [showGallery, setShowGallery] = useState(false);
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-16">

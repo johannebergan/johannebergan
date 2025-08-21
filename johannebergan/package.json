@@ -108,7 +108,6 @@
     "autoprefixer": "^10.4.21",
     "eslint": "^9.33.0",
     "eslint-config-next": "^15.4.6",
-    "lightningcss": "^1.30.1",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.14",
     "tsx": "^4.20.4",
