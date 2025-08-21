@@ -57,6 +57,8 @@ export default function BooksPage() {
                   <Image
                     src={book.cover ?? "/images/cover-placeholder.png"}
                     alt={book.title}
+                    width={100}
+                    height={100}
                     className="h-48 w-auto object-contain mb-2"
                   />
                   <p className="text-sm font-medium text-center line-clamp-2">
