@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Gallery from "@/components/gallery";
+import { FaBookOpen, FaCameraRetro } from "react-icons/fa";
 
 export default function Home() {
   const [showGallery, setShowGallery] = useState(false);
@@ -42,7 +43,10 @@ export default function Home() {
           href="/gallery"
           className="group rounded-2xl border p-8 flex flex-col items-center hover:bg-zinc-50 transition shadow-md"
         >
-          <span className="text-5xl mb-4">🖼️</span>
+
+          <span className="text-5xl mb-4">          
+            <FaCameraRetro />
+          </span>
           <h3 className="text-xl font-semibold mb-2">Se bilder</h3>
           <p className="text-muted-foreground text-center">
             Et lite innblikk i ting jeg gjør på fritiden.
@@ -53,7 +57,10 @@ export default function Home() {
           href="/books"
           className="group rounded-2xl border p-8 flex flex-col items-center hover:bg-zinc-50 transition shadow-md"
         >
-          <span className="text-5xl mb-4">📚</span>
+          
+          <span className="text-5xl mb-4">
+            <FaBookOpen />
+          </span>
           <h3 className="text-xl font-semibold mb-2">Utforsk bøkene</h3>
           <p className="text-muted-foreground text-center">
             Se en samling av bøker jeg liker.

@@ -11,13 +11,6 @@ import {
 import { verv } from "@/data/verv";
 
 
-function formatPeriod(startYear?: number, endYear?: number, ongoing?: boolean) {
-  if (!startYear) return "";
-  if (ongoing) return `${startYear} – pågår`;
-  if (endYear) return `${startYear} – ${endYear}`;
-  return `${startYear}`;
-}
-
 function formatRange(start: string, end?: string, ongoing?: boolean) {
   if (!start) return "";
   if (ongoing) return `${start} – pågår`;
@@ -52,7 +45,11 @@ export default function CvPage() {
               </CardContent>
 
               <CardFooter className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
-                <span className="font-medium">{exp.period}</span>
+                <span className="font-medium">
+                  {formatRange(exp.start ?? "", exp.end, exp.ongoing)}
+
+
+                </span>
               </CardFooter>
             </Card>
           ))}
@@ -60,7 +57,6 @@ export default function CvPage() {
       </section>
       <hr className="my-12 border-t" />
 
-      {/* Utdanning */}
       <section aria-labelledby="utdanning" className="space-y-10">
         <h2 id="utdanning" className="text-xl font-medium">Utdanning</h2>
 
@@ -83,7 +79,7 @@ export default function CvPage() {
 
               <CardFooter className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
                 <span className="font-medium">
-                  {formatPeriod(edu.startYear, edu.endYear, edu.ongoing)}
+                  {formatRange(edu.start ?? "", edu.end, edu.ongoing)}
                 </span>
               </CardFooter>
             </Card>
@@ -92,34 +88,6 @@ export default function CvPage() {
       </section>
       <hr className="my-12 border-t" />
 
-      <section aria-labelledby="verv" className="space-y-10">
-        <h2 id="erfaring" className="text-xl font-medium">Erfaring</h2>
-
-        <div className=" space-y-6">
-          {experience.map((exp, i) => (
-            <Card
-              key={`${exp.title}-${exp.org}-${i}`}
-              className="h-full hover:shadow-md transition-shadow"
-            >
-              <CardHeader className="pb-3">
-                <CardTitle className="leading-tight">{exp.title}</CardTitle>
-                <CardDescription>{exp.org}</CardDescription>
-              </CardHeader>
-
-              <CardContent className="text-sm text-muted-foreground">
-                <p>{exp.description}</p>
-              </CardContent>
-
-              <CardFooter className="flex flex-wrap gap-x-3 gap-y-1 text-sm">
-                <span className="font-medium">{exp.period}</span>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
-      </section>
-      <hr className="my-12 border-t" />
-
-      {/* Verv */}
       <section aria-labelledby="verv" className="space-y-10">
         <h2 id="verv" className="text-xl font-medium">Verv</h2>
 
@@ -130,10 +98,8 @@ export default function CvPage() {
               className="h-full hover:shadow-md transition-shadow"
             >
               <CardHeader className="pb-3">
-                {/* Første linje: rolle */}
                 <CardTitle className="leading-tight">{v.role}</CardTitle>
-                {/* Andre linje: organisasjon */}
-                <CardDescription className="italic">{v.org}</CardDescription>
+                <CardDescription >{v.org}</CardDescription>
               </CardHeader>
 
               <CardContent className="text-sm text-muted-foreground">
@@ -149,9 +115,6 @@ export default function CvPage() {
           ))}
         </div>
       </section>
-
-
-
     </main>
   );
 }
