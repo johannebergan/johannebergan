@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS-variabler (samme som før) */
 :root {
   --radius: 0.5rem;
 
